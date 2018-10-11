@@ -50,8 +50,11 @@ namespace DesktopCop
                     case ".lnk":
                     case ".url":
                     {
-                        Console.WriteLine($"Removing {e.Name}");
-                        File.Delete(e.FullPath);
+                        if (File.Exists(e.FullPath))
+                        {
+                            Console.WriteLine($"Removing {e.Name}");
+                            File.Delete(e.FullPath);
+                        }
                         break;
                     }
                 }
