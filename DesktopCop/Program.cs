@@ -22,12 +22,10 @@ namespace DesktopCop
             fileSystemWatcher.Created += FileSystemWatcher_Created;
             fileSystemWatcher.EnableRaisingEvents = true;
 
-            // Run the program forever.
-            // TODO: Figure out if there is a better way to do this.
-            while (true)
-            {
-                Thread.Sleep(1);
-            }
+            // Run the program forever by waiting on an event which will never happen.
+            Console.WriteLine("Entering Blocking State");
+            var NeverQuit = new ManualResetEvent(false);
+            NeverQuit.WaitOne();
         }
 
         /// <summary>
