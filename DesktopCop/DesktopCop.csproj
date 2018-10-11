@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B2572910-AECB-4148-B9B3-EB4212533CE5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>DesktopCop</RootNamespace>
     <AssemblyName>DesktopCop</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
