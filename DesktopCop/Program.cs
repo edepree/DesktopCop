@@ -10,13 +10,14 @@ namespace DesktopCop
         {
             // Disover the Desktop for the current user.
             Console.WriteLine("Starting DesktopCop");
+            
             var desktopDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
             var deskopDirectoryPath = desktopDirectory.FullName;
             
             // Create a FileWatcher to monitor for items added to the Dekstop.
             Console.WriteLine($"Monitoring {deskopDirectoryPath}");
+            
             var fileSystemWatcher = new FileSystemWatcher();
-
             fileSystemWatcher.Path = deskopDirectoryPath;
             fileSystemWatcher.Created += FileSystemWatcher_Created;
             fileSystemWatcher.EnableRaisingEvents = true;
