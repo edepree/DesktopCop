@@ -47,7 +47,7 @@ namespace DesktopCop
             Console.WriteLine($"File {e.Name} Created");
 
             // Get a file's extension to determine the file type.
-            string fileEnding = Path.GetExtension(e.Name);
+            string fileEnding = Path.GetExtension(e.Name).ToLower();
 
             Console.WriteLine($"File Type {fileEnding} Discovered");
 
