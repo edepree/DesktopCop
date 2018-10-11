@@ -8,7 +8,7 @@ namespace DesktopCop
     {
         static void Main(string[] args)
         {
-            // Disover the Desktop for the current user.
+            // Disover the desktop for the current user.
             Console.WriteLine("Starting DesktopCop");
             
             var desktopDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
@@ -17,7 +17,7 @@ namespace DesktopCop
             var publicDesktopDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory));
             var publicDesktopDirectoryPath = publicDesktopDirectory.FullName;
 
-            // Create a FileWatcher to monitor for items added to the Dekstop.
+            // Create a FileWatcher to monitor for items added to the dekstop.
             Console.WriteLine($"Monitoring {deskopDirectoryPath}");
             Console.WriteLine($"Monitoring {publicDesktopDirectoryPath}");
 
@@ -38,7 +38,7 @@ namespace DesktopCop
         }
 
         /// <summary>
-        /// An event listener to monitor for new items added to the Windows Desktop and remove any LNK or URL file types
+        /// An event listener to monitor for new items added to the Windows desktop and remove any LNK or URL file types
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">The file created on the Desktop</param>
@@ -46,18 +46,18 @@ namespace DesktopCop
         {
             Console.WriteLine($"File {e.Name} Created");
 
-            // Get File Extension to Determine Type
+            // Get a file's extension to determine the file type.
             string fileEnding = Path.GetExtension(e.Name);
 
             Console.WriteLine($"File Type {fileEnding} Discovered");
 
-            // Remove offending files.
+            // Remove offending files from monitored directories.
             switch (fileEnding)
             {
                 case ".lnk":
                 case ".url":
-                    bool tryagain = true;
-                    while (tryagain)
+                    bool TryAgain = true;
+                    while (TryAgain)
                     {
                         if (File.Exists(e.FullPath))
                         {
@@ -65,11 +65,11 @@ namespace DesktopCop
                             try
                             {
                                 File.Delete(e.FullPath);
-                                tryagain = false; //We Have Deleted The File
+                                TryAgain = false; // The file as been successfully deleted.
                             }
-                            catch (System.IO.IOException) { } //The Created Event is not guaranteed to be raised exactly once. These leads to a race condition.
+                            catch (System.IO.IOException) { } // The Created event is not guaranteed to be raised exactly once. These leads to a race condition.
                         }
-                        else { tryagain = false; } //File No Longer Exists
+                        else { TryAgain = false; } // The file no longer exists.
                     }
                     break;
             }
